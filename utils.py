@@ -2,14 +2,13 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration, VitsModel, Aut
 import torch
 import soundfile as sf
 
-# Инициализация моделей
 # Перевод
 translation_model_name = 'utrobinmv/t5_translate_en_ru_zh_large_1024_v2'
 translation_model = T5ForConditionalGeneration.from_pretrained(translation_model_name)
 translation_tokenizer = T5Tokenizer.from_pretrained(translation_model_name)
 
 translation_model.eval()
-translation_model.to('cpu')  # Для GPU используйте 'cuda'
+translation_model.to('cpu')
 
 # Озвучивание
 tts_model_name = "facebook/mms-tts-rus"
